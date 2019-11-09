@@ -7,8 +7,8 @@
 #define __SCREEN__BOUNDS__Y__ 480
 
 #define RED    0xF800u
-#define GREEN  0x001Fu
-#define BLUE   0x07E0u
+#define GREEN  0x07E0u
+#define BLUE   0x001Fu
 #define BLACK  0x0000u
 #define YELLOW (RED|GREEN)
 #define WHITE  0xFFFFu      /* Unknown colour used. */
