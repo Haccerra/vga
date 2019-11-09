@@ -1,6 +1,6 @@
 #include "../include/draw.h"
 
-int image_matrix[__SCREEN__BOUNDS__X__][__SCREEN__BOUNDS__Y__];
+unsigned int image_matrix[__SCREEN__BOUNDS__X__][__SCREEN__BOUNDS__Y__];
 struct Colour previous_colour;
 
 

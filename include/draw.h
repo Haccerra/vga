@@ -8,7 +8,7 @@
 
 boolean draw2canvas(struct Commands);
 
-extern int image_matrix[__SCREEN__BOUNDS__X__][__SCREEN__BOUNDS__Y__];
+extern unsigned int image_matrix[__SCREEN__BOUNDS__X__][__SCREEN__BOUNDS__Y__];
 
 
 
