@@ -70,7 +70,7 @@ static struct Colour set_background_colour(struct Colour newcolour)
     {
       for (int y = 0; y < __SCREEN__BOUNDS__Y__; y++)
       {
-        if (previous_u._bits2decimal == image_matrix[x][y])
+        if (previous_u._bits2decimal == image_matrix[y][x])
         {
           image_matrix[y][x] = newcolour_u._bits2decimal;
         }
