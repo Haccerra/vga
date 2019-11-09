@@ -1,6 +1,6 @@
 #include "../include/draw.h"
 
-unsigned int image_matrix[__SCREEN__BOUNDS__X__][__SCREEN__BOUNDS__Y__];
+unsigned int image_matrix[__SCREEN__BOUNDS__Y__][__SCREEN__BOUNDS__X__];
 struct Colour previous_colour;
 
 
@@ -16,9 +16,9 @@ static union ColourBitUnison colour_bits_2_dec(struct Colour);
 
 static void instantialise_matrix(int** image_matrix)
 {
-  for (int i = 0; i < __SCREEN__BOUNDS__X__; i++)
+  for (int i = 0; i < __SCREEN__BOUNDS__Y__; i++)
   {
-    for (int j = 0; j < __SCREEN__BOUNDS__Y__; j++)
+    for (int j = 0; j < __SCREEN__BOUNDS__X__; j++)
     {
       image_matrix[i][j] = 0;
     }
@@ -31,7 +31,7 @@ static void draw_horizontal_line(int x_beg, int x_end, int y, struct Colour colo
 
   for (int x = x_beg; x <= x_end; x++)
   {
-    image_matrix[x][y] = colour_u._bits2decimal;
+    image_matrix[y][x] = colour_u._bits2decimal;
   }
 }
 
@@ -41,7 +41,7 @@ static void draw_vertical_line(int y_beg, int y_end, int x, struct Colour colour
 
   for (int y = y_beg; y <= y_end; y++)
   {
-    image_matrix[x][y] = colour_u._bits2decimal;
+    image_matrix[y][x] = colour_u._bits2decimal;
   }
 }
 
@@ -53,7 +53,7 @@ static void draw_rectangle(int x_beg, int x_end, int y_beg, int y_end, struct Co
   {
     for (int y = y_beg; y <= y_end; y++)
     {
-      image_matrix[x][y] = colour_u._bits2decimal;
+      image_matrix[y][x] = colour_u._bits2decimal;
     }
   }
 }
@@ -72,7 +72,7 @@ static struct Colour set_background_colour(struct Colour newcolour)
       {
         if (previous_u._bits2decimal == image_matrix[x][y])
         {
-          image_matrix[x][y] = newcolour_u._bits2decimal;
+          image_matrix[y][x] = newcolour_u._bits2decimal;
         }
         else
         {

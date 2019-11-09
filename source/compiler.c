@@ -639,13 +639,13 @@ static void set_colour_bits(int queue_number)
   if ((enum ColourType)__UNKNOWN_COLOUR == execute_instructions[queue_number-1].colour_type)
   {
     /* Set colour to white. Unexpected entry to this body. */
-    execute_instructions[queue_number].colour2draw.red   = 63u;
-    execute_instructions[queue_number].colour2draw.green = 31u;
+    execute_instructions[queue_number].colour2draw.red   = 31u;
+    execute_instructions[queue_number].colour2draw.green = 63u;
     execute_instructions[queue_number].colour2draw.blue  = 31u;
   }
   else if ((enum ColourType)__RED == execute_instructions[queue_number].colour_type)
   {
-    execute_instructions[queue_number].colour2draw.red   = 32u;
+    execute_instructions[queue_number].colour2draw.red   = 31u;
     execute_instructions[queue_number].colour2draw.green =  0u;
     execute_instructions[queue_number].colour2draw.blue  =  0u;
   }
@@ -658,7 +658,7 @@ static void set_colour_bits(int queue_number)
   else if ((enum ColourType)__GREEN == execute_instructions[queue_number].colour_type)
   {
     execute_instructions[queue_number].colour2draw.red   =  0u;
-    execute_instructions[queue_number].colour2draw.green = 31u;
+    execute_instructions[queue_number].colour2draw.green = 63u;
     execute_instructions[queue_number].colour2draw.blue  =  0u;
   }
   else if ((enum ColourType)__BLACK == execute_instructions[queue_number].colour_type)
@@ -669,8 +669,8 @@ static void set_colour_bits(int queue_number)
   }
   else if ((enum ColourType)__YELLOW == execute_instructions[queue_number].colour_type)
   {
-    execute_instructions[queue_number].colour2draw.red   = 63u;
-    execute_instructions[queue_number].colour2draw.green = 31u;
+    execute_instructions[queue_number].colour2draw.red   = 31u;
+    execute_instructions[queue_number].colour2draw.green = 63u;
     execute_instructions[queue_number].colour2draw.blue  =  0u;
   }
   else

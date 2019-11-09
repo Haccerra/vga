@@ -33,8 +33,8 @@ struct Pixel
 
 struct Colour
 {
-  uint16 red   : 6;
-  uint16 green : 5;
+  uint16 red   : 5;
+  uint16 green : 6;
   uint16 blue  : 5;
 };
 
