@@ -11,7 +11,7 @@ static void draw_rectangle(int, int, int, int, struct Colour colour);
 
 static struct Colour set_background_colour(struct Colour);
 
-static union ColourBitUnison colour_bits_2_dec(struct Colour);
+//static union ColourBitUnison colour_bits_2_dec(struct Colour);
 
 
 static void instantialise_matrix(int** image_matrix)
@@ -27,33 +27,33 @@ static void instantialise_matrix(int** image_matrix)
 
 static void draw_horizontal_line(int x_beg, int x_end, int y, struct Colour colour)
 {
-  union ColourBitUnison colour_u = colour_bits_2_dec(colour);
+  //union ColourBitUnison colour_u = colour_bits_2_dec(colour);
 
   for (int x = x_beg; x <= x_end; x++)
   {
-    image_matrix[y][x] = colour_u._bits2decimal;
+    image_matrix[y][x] = colour.colour; //colour_u._bits2decimal;
   }
 }
 
 static void draw_vertical_line(int y_beg, int y_end, int x, struct Colour colour)
 {
-  union ColourBitUnison colour_u = colour_bits_2_dec(colour);
+  //union ColourBitUnison colour_u = colour_bits_2_dec(colour);
 
   for (int y = y_beg; y <= y_end; y++)
   {
-    image_matrix[y][x] = colour_u._bits2decimal;
+    image_matrix[y][x] = colour.colour; //colour_u._bits2decimal;
   }
 }
 
 static void draw_rectangle(int x_beg, int x_end, int y_beg, int y_end, struct Colour colour)
 {
-  union ColourBitUnison colour_u = colour_bits_2_dec(colour);
+  //union ColourBitUnison colour_u = colour_bits_2_dec(colour);
 
   for (int x = x_beg; x <= x_end; x++)
   {
     for (int y = y_beg; y <= y_end; y++)
     {
-      image_matrix[y][x] = colour_u._bits2decimal;
+      image_matrix[y][x] = colour.colour;//colour_u._bits2decimal;
     }
   }
 }
@@ -61,37 +61,20 @@ static void draw_rectangle(int x_beg, int x_end, int y_beg, int y_end, struct Co
 static struct Colour set_background_colour(struct Colour newcolour)
 {
 
-  union ColourBitUnison newcolour_u = colour_bits_2_dec(newcolour);
-  union ColourBitUnison previous_u  = colour_bits_2_dec(previous_colour);
+  //union ColourBitUnison newcolour_u = colour_bits_2_dec(newcolour);
+  //union ColourBitUnison previous_u  = colour_bits_2_dec(previous_colour);
 
-  if ((__UNKNOWN_COLOUR == (enum CommandType)previous_u._bits2decimal) || (newcolour_u._bits2decimal != previous_u._bits2decimal))
+  //if ((__UNKNOWN_COLOUR == (enum ColourType)previous_u._bits2decimal) || (newcolour_u._bits2decimal != previous_u._bits2decimal))
+  if ((WHITE == previous_colour.colour) || (newcolour.colour != previous_colour.colour))
   {
     for (int x = 0; x < __SCREEN__BOUNDS__X__; x++)
     {
       for (int y = 0; y < __SCREEN__BOUNDS__Y__; y++)
       {
-        if (previous_u._bits2decimal == image_matrix[y][x])
+        if (previous_colour.colour == image_matrix[y][x])
+        //if (previous_u._bits2decimal == image_matrix[y][x])
         {
-          if ((enum ColourType)__RED == execute_instructions[queue_number].colour_type)
-          {
-            image_matrix[y][x] = 0xF800u;
-          }
-          if ((enum ColourType)__BLUE == execute_instructions[queue_number].colour_type)
-          {
-            image_matrix[y][x] = 0x001Fu;
-          }
-          if ((enum ColourType)__GREEN == execute_instructions[queue_number].colour_type)
-          {
-            image_matrix[y][x] = 0x07E0u;
-          }
-          if ((enum ColourType)__YELLOW == execute_instructions[queue_number].colour_type)
-          {
-            image_matrix[y][x] = 0xF800u | 0x07E0u;
-          }
-          if ((enum ColourType)__BLACK == execute_instructions[queue_number].colour_type)
-          {
-            image_matrix[y][x] = 0x0000u;
-          }
+          image_matrix[y][x] = newcolour.colour; //newcolour_u._bits2decimal;
         }
         else
         {
@@ -109,7 +92,7 @@ static struct Colour set_background_colour(struct Colour newcolour)
   }
 }
 
-static union ColourBitUnison colour_bits_2_dec(struct Colour colour)
+/*static union ColourBitUnison colour_bits_2_dec(struct Colour colour)
 {
   union ColourBitUnison colour_u;
 
@@ -118,7 +101,7 @@ static union ColourBitUnison colour_bits_2_dec(struct Colour colour)
   colour_u._colourBits.blue  = colour.blue;
 
   return colour_u;
-}
+}*/
 
 boolean draw2canvas(struct Commands cmd)
 {

@@ -16,7 +16,7 @@ static string  argument_cutting_from_string_helper_function(uint8, uint8, string
 static uint8   evaluate_comma_numbers_in_command_helper_function(string);
 static boolean is_arg_int_type_number(string);
 static boolean check_if_coordinates_are_within_bounds(uint16, uint16);
-static void    set_colour_bits(int);
+//static void    set_colour_bits(int);
 
 static boolean file_process(FILE*);
 
@@ -521,32 +521,38 @@ static RET colour_command_validate_helper_function(string possibleColourIdentifi
   if (RET_OK == strcmp(possibleColourIdentifier, "RED"))
   {
     execute_instructions[queue_number].colour_type = (enum ColourType)__RED;
+    execute_instructions[queue_number].colour2draw.colour = RED;
     return RET_OK;
   }
   else if (RET_OK == strcmp(possibleColourIdentifier, "BLUE"))
   {
     execute_instructions[queue_number].colour_type = (enum ColourType)__BLUE;
+    execute_instructions[queue_number].colour2draw.colour = BLUE;
     return RET_OK;
   }
   else if (RET_OK == strcmp(possibleColourIdentifier, "GREEN"))
   {
     execute_instructions[queue_number].colour_type = (enum ColourType)__GREEN;
+    execute_instructions[queue_number].colour2draw.colour = GREEN;
     return RET_OK;
   }
   else if (RET_OK == strcmp(possibleColourIdentifier, "BLACK"))
   {
     execute_instructions[queue_number].colour_type = (enum ColourType)__BLACK;
+    execute_instructions[queue_number].colour2draw.colour = BLACK;
     return RET_OK;
   }
   else if (RET_OK == strcmp(possibleColourIdentifier, "YELLOW"))
   {
     execute_instructions[queue_number].colour_type = (enum ColourType)__YELLOW;
+    execute_instructions[queue_number].colour2draw.colour = YELLOW;
     return RET_OK;
   }
   else
   {
     /* Invalid colour. Abort the programme. */
     execute_instructions[queue_number].colour_type = (enum ColourType)__UNKNOWN_COLOUR;
+    execute_instructions[queue_number].colour2draw.colour = WHITE;
     return RET_NOK;
   }
 
@@ -634,11 +640,11 @@ static boolean check_if_coordinates_are_within_bounds(uint16 x_location, uint16 
   return FALSE; /**< Unreachable statement. */
 }
 
-static void set_colour_bits(int queue_number)
+/*static void set_colour_bits(int queue_number)
 {
   if ((enum ColourType)__UNKNOWN_COLOUR == execute_instructions[queue_number-1].colour_type)
   {
-    /* Set colour to white. Unexpected entry to this body. */
+    // Set colour to white. Unexpected entry to this body.
     execute_instructions[queue_number].colour2draw.red   = 0b11111;
     execute_instructions[queue_number].colour2draw.green = 0b111111;
     execute_instructions[queue_number].colour2draw.blue  = 0b11111;
@@ -675,9 +681,9 @@ static void set_colour_bits(int queue_number)
   }
   else
   {
-    /* Unreachable entry. */
+    // Unreachable entry.
   }
-}
+}*/
 
 static boolean file_process(FILE* file2read)
 {
@@ -706,7 +712,7 @@ static boolean file_process(FILE* file2read)
         RET isColourCorrect    = colour_process(line, queue_number);
         RET isArgFormatCorrect = argument_process(line, queue_number);
 
-        set_colour_bits(queue_number);
+        //set_colour_bits(queue_number);
 
         queue_number++;
         numberOfLinesReadFromTheFile++;
