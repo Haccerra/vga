@@ -677,11 +677,6 @@ static void set_colour_bits(int queue_number)
   {
     /* Unreachable entry. */
   }
-
-  printf ("%u %u %u %d\n", execute_instructions[queue_number].colour2draw.red,
-  execute_instructions[queue_number].colour2draw.green,
-  execute_instructions[queue_number].colour2draw.blue,
-  execute_instructions[queue_number].colour_type);
 }
 
 static boolean file_process(FILE* file2read)
