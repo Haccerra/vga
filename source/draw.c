@@ -72,7 +72,26 @@ static struct Colour set_background_colour(struct Colour newcolour)
       {
         if (previous_u._bits2decimal == image_matrix[y][x])
         {
-          image_matrix[y][x] = newcolour_u._bits2decimal;
+          if ((enum ColourType)__RED == execute_instructions[queue_number].colour_type)
+          {
+            image_matrix[y][x] = 0xF800u;
+          }
+          if ((enum ColourType)__BLUE == execute_instructions[queue_number].colour_type)
+          {
+            image_matrix[y][x] = 0x001Fu;
+          }
+          if ((enum ColourType)__GREEN == execute_instructions[queue_number].colour_type)
+          {
+            image_matrix[y][x] = 0x07E0u;
+          }
+          if ((enum ColourType)__YELLOW == execute_instructions[queue_number].colour_type)
+          {
+            image_matrix[y][x] = 0xF800u | 0x07E0u;
+          }
+          if ((enum ColourType)__BLACK == execute_instructions[queue_number].colour_type)
+          {
+            image_matrix[y][x] = 0x0000u;
+          }
         }
         else
         {
